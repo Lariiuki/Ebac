@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve projetonovo
+After=network.target
+
+[Service]
+User=larissayuki@PPM-JAMF-15499
+Group=nginx
+WorkingDirectory=/home/adminuser/Documents/python/projetonovo
+Environment="PATH=/home/adminuser/Documents/python/projetonovo/projetonovoenv/bin"
+ExecStart=/home/adminuser/Documents/python/projetonovo/projetonovoenv/bin/gunicorn --workers 3 --bind unix:/home/adminuser/Documents/python/projetonovo/projetonovo.sock wsgi:application
+
+[Install]
+WantedBy=multi-user.target
